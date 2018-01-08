@@ -1,20 +1,4 @@
-#########################Description#####################################  
-#The script I have written allows you to update an existing cache using a feature class
-#whose features represent the areas you wish to cache (a regularly spaced grid or other
-#features of interest). Within the script itself you identify the location of the feature
-#class (needs to be in the same projection as your map service), the location of the
-#cache configuration file, and the specific update cache parameters for your cached map
-#service (server name, service name, data frame name, scales to cache, update mode, &
-#whether or not to use anti-aliasing).  
-#
-#When executed, the script will check the feature class to see if the "Cached" field
-#exists.  If it does not exist it will create the column and run update map server cache
-#for each feature.  When the update procedure for that feature finishes it will mark that
-#feature as cached and move to the next feature.  If the "Cached" field does exist, it
-#will skip the features that have already been marked as having been cached and start
-#up where it left off.
-#Please send questions to Jeremy Bartley jbartley@esri.com
-#########################Description#####################################  
+
 
 # Import system modules
 import arcpy, sys, math, os
@@ -53,13 +37,11 @@ layers=""
 
 #Enter scales you wish to cache.  These should be similar to the scales
 #that you have already cached your service at.
-#scales = "10000;7000;4000;2000;1000"
 scales = "16000000;8000000;4000000;2000000;1000000;500000;250000;125000;64000;32000;16000;5000"
 
 #Enter update mode.  Recreate All Tiles, replaces all tiles.
 #Recreate Empty Tiles, replaces only empty tiles.
 update_mode = "Recreate All Tiles"
-#update_mode = "Recreate Empty Tiles"
 
 #Enter the number of SOCs that you wish to cache with
 #This can be no more than the max set for the service.
